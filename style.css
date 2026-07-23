@@ -220,6 +220,97 @@ nav {
 /* Content-section pattern (custom.html / integration.html / website-development.html / business-automation.html) */
 .content-section { margin-bottom: 4rem; }
 
+/* How It Works — numbered step list used across service pages */
+.how-it-works { margin-bottom: 4rem; }
+
+.how-it-works .subsection-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gray-500);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.how-it-works .subsection-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--gray-800);
+}
+
+.step-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 2rem;
+    border-bottom: 1px solid var(--gray-800);
+}
+
+.step-item:last-child { border-bottom: none; }
+
+.step-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--gray-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--white);
+}
+
+.step-body h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.step-body p {
+    color: var(--gray-400);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* In Practice — real-world example box */
+.example-box {
+    border: 1px solid var(--gray-700);
+    background: var(--gray-900);
+    padding: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.example-box .subsection-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gray-500);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.example-box p {
+    color: var(--gray-300);
+    font-size: 1.02rem;
+    line-height: 1.8;
+}
+
+.example-box p strong { color: var(--white); }
+
+@media (max-width: 768px) {
+    .step-item { padding: 1.5rem; gap: 1rem; }
+    .step-number { width: 32px; height: 32px; font-size: 0.85rem; }
+}
+
 .section-badge {
     display: inline-flex;
     align-items: center;
