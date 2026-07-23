@@ -1,0 +1,335 @@
+/* ==========================================================================
+   SigOps shared stylesheet
+   Base design system used across every page (index, about, receptionist,
+   integration, custom, website-development, business-automation).
+   Page-specific layout (hero sections, tier grids, etc.) stays inline in
+   each page's own <style> block; this file holds what's identical
+   everywhere so it isn't duplicated eight times over.
+   ========================================================================== */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --gray-100: #f5f5f5;
+    --gray-200: #e5e5e5;
+    --gray-300: #d4d4d4;
+    --gray-400: #a3a3a3;
+    --gray-500: #737373;
+    --gray-600: #525252;
+    --gray-700: #404040;
+    --gray-800: #262626;
+    --gray-900: #171717;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+::selection { background: var(--white); color: var(--black); }
+a { color: inherit; text-decoration: none; }
+
+/* Header / Nav */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gray-400);
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-links a:hover { color: var(--white); }
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn svg { width: 16px; height: 16px; }
+
+.btn-primary {
+    background: var(--white);
+    color: var(--black);
+}
+
+.btn-primary:hover {
+    background: var(--gray-200);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.btn-outline:hover {
+    background: var(--white);
+    color: var(--black);
+}
+
+.btn-lg { padding: 18px 36px; font-size: 0.85rem; }
+.btn-sm { padding: 10px 20px; font-size: 0.75rem; }
+
+/* Shared inner-page template (about / receptionist / integration / custom /
+   website-development / business-automation) */
+.page-content {
+    padding: 140px 3rem 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--gray-400);
+    margin-bottom: 3rem;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover { color: var(--white); }
+
+.back-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+.page-header {
+    margin-bottom: 4rem;
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.page-header .subtitle {
+    font-size: 1.25rem;
+    color: var(--gray-400);
+    max-width: 600px;
+}
+
+/* Tier pattern (receptionist.html) */
+.tier-section { margin-bottom: 5rem; }
+
+.tier-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    padding: 10px 20px;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.tier-badge.core { border-color: var(--gray-600); }
+.tier-badge.advanced { border-color: var(--white); }
+.tier-badge.enterprise { border-color: var(--white); background: var(--white); color: var(--black); }
+
+.coming-soon-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gray-900);
+    border: 1px solid var(--gray-600);
+    padding: 10px 20px;
+    margin-bottom: 2rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gray-300);
+}
+
+.tier-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.tier-description {
+    font-size: 1.1rem;
+    color: var(--gray-300);
+    margin-bottom: 2rem;
+    max-width: 700px;
+}
+
+/* Content-section pattern (custom.html / integration.html / website-development.html / business-automation.html) */
+.content-section { margin-bottom: 4rem; }
+
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gray-900);
+    border: 1px solid var(--white);
+    padding: 10px 20px;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: var(--gray-300);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+    line-height: 1.8;
+}
+
+/* Feature lists, shared across every tier/content section */
+.feature-list {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.feature-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    color: var(--gray-300);
+    font-size: 1rem;
+}
+
+.feature-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    background: var(--white);
+}
+
+.feature-list li strong { color: var(--white); }
+
+.sub-list {
+    list-style: none;
+    margin-top: 0.75rem;
+    margin-left: 1rem;
+}
+
+.sub-list li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.sub-list li::before {
+    width: 6px;
+    height: 6px;
+    background: var(--gray-500);
+    top: 8px;
+}
+
+.result-box {
+    background: var(--gray-900);
+    border-left: 4px solid var(--white);
+    padding: 1.5rem 2rem;
+    margin-top: 2rem;
+}
+
+.result-box strong {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.result-box p {
+    color: var(--gray-300);
+    margin: 0;
+}
+
+.divider {
+    height: 1px;
+    background: var(--gray-800);
+    margin: 4rem 0;
+}
+
+.cta-section {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    color: var(--gray-400);
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .page-content { padding: 120px 1.5rem 60px; }
+    .page-header h1 { font-size: 2.5rem; }
+    .tier-title { font-size: 1.5rem; }
+}

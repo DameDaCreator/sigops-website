@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Signal Operations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+        }
+
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--white); color: var(--black); }
+        a { color: inherit; text-decoration: none; }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gray-800);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gray-400);
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active { color: var(--white); }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 0;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn svg { width: 16px; height: 16px; }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-primary:hover {
+            background: var(--gray-200);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-sm { padding: 10px 20px; font-size: 0.75rem; }
+
+        /* Page Header */
+        .page-header {
+            padding: 180px 3rem 100px;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-800);
+        }
+
+        .page-header h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--gray-400);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        section { padding: 6rem 3rem; }
+        .section-inner { max-width: 1000px; margin: 0 auto; }
+
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gray-500);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Mission Section */
+        .mission-section {
+            background: var(--black);
+            border-bottom: 1px solid var(--gray-800);
+        }
+
+        .mission-content {
+            text-align: center;
+        }
+
+        .mission-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border: 1px solid var(--gray-600);
+            margin-bottom: 2rem;
+        }
+
+        .mission-badge span {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .mission-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+        }
+
+        .mission-statement {
+            font-size: 1.25rem;
+            color: var(--gray-300);
+            line-height: 2;
+            margin-bottom: 2.5rem;
+        }
+
+        .mission-statement strong {
+            color: var(--white);
+        }
+
+        .mission-tagline {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.02em;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-800);
+        }
+
+        /* Vision Section */
+        .vision-section {
+            background: var(--gray-900);
+            border-bottom: 1px solid var(--gray-800);
+        }
+
+        .vision-box {
+            text-align: center;
+        }
+
+        .vision-box h2 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gray-500);
+            margin-bottom: 2rem;
+        }
+
+        .vision-box p {
+            font-size: 1.4rem;
+            color: var(--white);
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: var(--black);
+            border-bottom: 1px solid var(--gray-800);
+        }
+
+        .values-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .values-header h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px;
+            background: var(--gray-700);
+            border: 1px solid var(--gray-700);
+        }
+
+        .value-item {
+            background: var(--black);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .value-number {
+            font-size: 0.7rem;
+            color: var(--gray-600);
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .value-item h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .value-item p {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            line-height: 1.7;
+        }
+
+        /* Minority Owned Section */
+        .minority-section {
+            background: var(--gray-900);
+        }
+
+        .minority-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .minority-text h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .minority-text p {
+            font-size: 1.1rem;
+            color: var(--gray-400);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .minority-badge-large {
+            border: 1px solid var(--gray-700);
+            padding: 3rem;
+            text-align: center;
+            background: var(--black);
+        }
+
+        .minority-badge-large span {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gray-500);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .minority-badge-large strong {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--black);
+            text-align: center;
+            border-top: 1px solid var(--gray-800);
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            color: var(--gray-500);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem;
+            border-top: 1px solid var(--gray-800);
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .footer-logo img {
+            height: 32px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-copy {
+            color: var(--gray-600);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .values-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .minority-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav, section, footer {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            .nav-links { display: none; }
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .cta-buttons {
+                flex-direction: column;
+            }
+            .cta-buttons .btn {
+                width: 100%;
+            }
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="sigops-logo.png" alt="SigOps - Signal Operations">
+            </a>
+            <div class="nav-links">
+                <a href="about.html" class="active">About</a>
+                <a href="index.html#systems">Systems</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <a href="index.html#contact" class="btn btn-primary btn-sm">
+                Start Project
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>ABOUT US</h1>
+        <p>A minority-owned AI consulting firm committed to delivering operational excellence.</p>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="section-inner">
+            <div class="mission-content">
+                <div class="mission-badge">
+                    <span>Our Mission</span>
+                </div>
+                <h2 class="mission-title">EXCELLENCE IN AI CONSULTING</h2>
+                <p class="mission-statement">
+                    <strong>Signal Operations</strong> is a minority-owned AI consulting firm committed to delivering operational excellence for business owners. We design and implement intelligent workflow automation systems that drive efficiency, reduce costs, and create sustainable competitive advantages for our clients. Our mission is to democratize access to advanced AI solutions — transforming how businesses operate and positioning them for long-term success.
+                </p>
+                <p class="mission-tagline">We don't just consult. We build. We deliver. We lead.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision-section">
+        <div class="section-inner">
+            <div class="vision-box">
+                <h2>Our Vision</h2>
+                <p>To become the trusted AI infrastructure partner for small and mid-sized businesses nationwide — empowering underserved markets with the same technological advantages as enterprise organizations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="section-inner" style="max-width: 1400px;">
+            <div class="values-header">
+                <p class="section-label">What We Stand For</p>
+                <h2>OUR CORE VALUES</h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-number">01</div>
+                    <h3>Excellence</h3>
+                    <p>We hold ourselves to the highest standard in everything we build</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-number">02</div>
+                    <h3>Integrity</h3>
+                    <p>We operate with transparency and accountability</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-number">03</div>
+                    <h3>Innovation</h3>
+                    <p>We leverage cutting-edge AI to solve real business problems</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-number">04</div>
+                    <h3>Partnership</h3>
+                    <p>Our clients' success is our success</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-number">05</div>
+                    <h3>Inclusion</h3>
+                    <p>We are committed to creating opportunity and access</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minority Owned Section -->
+    <section class="minority-section">
+        <div class="section-inner" style="max-width: 1200px;">
+            <div class="minority-content">
+                <div class="minority-text">
+                    <h2>MINORITY-OWNED BUSINESS</h2>
+                    <p>Signal Operations is proud to be a minority-owned business. We believe that diversity drives innovation, and we are committed to creating opportunities and access for underserved communities.</p>
+                    <p>Our perspective allows us to understand the unique challenges facing small and mid-sized businesses — and build solutions that truly make a difference.</p>
+                </div>
+                <div class="minority-badge-large">
+                    <span>Certified</span>
+                    <strong>Minority-Owned<br>Business Enterprise</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="section-inner">
+            <h2>READY TO GET STARTED?</h2>
+            <p>Let's talk about how AI can transform your business operations.</p>
+            <div class="cta-buttons">
+                <a href="index.html#contact" class="btn btn-primary">
+                    Contact Us
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                </a>
+                <a href="index.html" class="btn btn-outline">
+                    Back to Home
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img src="sigops-logo.png" alt="SigOps">
+            </div>
+            <p class="footer-copy">© 2025 Signal Operations. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
