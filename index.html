@@ -1,1097 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SigOps | Signal Operations</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root {
-            --black: #000000;
-            --white: #ffffff;
-            --gray-100: #f5f5f5;
-            --gray-200: #e5e5e5;
-            --gray-300: #d4d4d4;
-            --gray-400: #a3a3a3;
-            --gray-500: #737373;
-            --gray-600: #525252;
-            --gray-700: #404040;
-            --gray-800: #262626;
-            --gray-900: #171717;
-        }
-
-        html { scroll-behavior: smooth; }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--black);
-            color: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        ::selection { background: var(--white); color: var(--black); }
-        a { color: inherit; text-decoration: none; }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            transition: all 0.5s ease;
-        }
-
-        header.scrolled {
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--gray-800);
-        }
-
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 3rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo img {
-            height: 40px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
-        }
-
-        .nav-links a {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--gray-400);
-            transition: color 0.3s ease;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover { color: var(--white); }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 28px;
-            border-radius: 0;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn svg { width: 16px; height: 16px; }
-
-        .btn-primary {
-            background: var(--white);
-            color: var(--black);
-        }
-
-        .btn-primary:hover {
-            background: var(--gray-200);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border: 1px solid var(--white);
-        }
-
-        .btn-outline:hover {
-            background: var(--white);
-            color: var(--black);
-        }
-
-        .btn-lg { padding: 18px 36px; font-size: 0.85rem; }
-        .btn-sm { padding: 10px 20px; font-size: 0.75rem; }
-
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 140px 3rem 100px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 20px;
-            border: 1px solid var(--gray-700);
-            margin-bottom: 3rem;
-        }
-
-        .status-dot {
-            position: relative;
-            width: 8px;
-            height: 8px;
-        }
-
-        .status-dot::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--white);
-            border-radius: 50%;
-            animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-
-        .status-dot::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--white);
-            border-radius: 50%;
-        }
-
-        @keyframes ping {
-            75%, 100% { transform: scale(2.5); opacity: 0; }
-        }
-
-        .status-badge span {
-            font-size: 0.75rem;
-            color: var(--gray-400);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .hero h1 {
-            font-size: clamp(3.5rem, 12vw, 8rem);
-            font-weight: 700;
-            line-height: 0.9;
-            letter-spacing: -0.04em;
-            margin-bottom: 1rem;
-        }
-
-        .animated-word-container {
-            font-size: clamp(3.5rem, 12vw, 8rem);
-            font-weight: 700;
-            line-height: 0.9;
-            letter-spacing: -0.04em;
-            margin-bottom: 3rem;
-            height: 1.15em;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .animated-word {
-            position: absolute;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            color: var(--white);
-            border-bottom: 4px solid var(--white);
-            padding-bottom: 0.1em;
-        }
-
-        .animated-word.exit {
-            transform: translateY(-110%);
-            opacity: 0;
-            filter: blur(10px);
-        }
-
-        .animated-word.enter {
-            transform: translateY(110%);
-            opacity: 0;
-            filter: blur(10px);
-        }
-
-        .hero-description {
-            font-size: 1.25rem;
-            color: var(--gray-400);
-            max-width: 600px;
-            margin-bottom: 3rem;
-            line-height: 1.8;
-            font-weight: 400;
-        }
-
-        .hero-description strong {
-            color: var(--white);
-            font-weight: 600;
-        }
-
-        .hero-ctas {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        /* Ticker */
-        .ticker {
-            padding: 1.5rem 0;
-            border-top: 1px solid var(--gray-800);
-            border-bottom: 1px solid var(--gray-800);
-            overflow: hidden;
-        }
-
-        /* Mission Section */
-        .mission-section {
-            background: var(--gray-900);
-            border-bottom: 1px solid var(--gray-800);
-        }
-
-        .mission-content {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .mission-statement {
-            font-size: 1.2rem;
-            color: var(--gray-300);
-            max-width: 900px;
-            margin: 0 auto 2rem;
-            line-height: 1.9;
-        }
-
-        .mission-statement strong {
-            color: var(--white);
-        }
-
-        .mission-tagline {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: 0.02em;
-        }
-
-        .vision-box {
-            border: 1px solid var(--gray-700);
-            padding: 3rem;
-            text-align: center;
-            margin-bottom: 4rem;
-            background: var(--black);
-        }
-
-        .vision-box h3 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--gray-500);
-            margin-bottom: 1.5rem;
-        }
-
-        .vision-box p {
-            font-size: 1.15rem;
-            color: var(--gray-300);
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1px;
-            background: var(--gray-700);
-            border: 1px solid var(--gray-700);
-        }
-
-        .value-item {
-            background: var(--gray-900);
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .value-item h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .value-item p {
-            font-size: 0.85rem;
-            color: var(--gray-500);
-            line-height: 1.6;
-        }
-
-        @media (max-width: 1024px) {
-            .values-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .ticker-track {
-            display: flex;
-            gap: 5rem;
-            animation: ticker 30s linear infinite;
-            width: max-content;
-        }
-
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .ticker-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            color: var(--gray-500);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        .ticker-dot {
-            width: 4px;
-            height: 4px;
-            background: var(--white);
-            border-radius: 50%;
-        }
-
-        /* Sections */
-        section { padding: 8rem 3rem; }
-        .section-inner { max-width: 1400px; margin: 0 auto; }
-
-        .section-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--gray-500);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1;
-            margin-bottom: 4rem;
-        }
-
-        /* Systems Grid */
-        .systems-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
-            background: var(--gray-800);
-            border: 1px solid var(--gray-800);
-        }
-
-        .system-card {
-            padding: 3rem;
-            background: var(--black);
-            transition: all 0.5s ease;
-        }
-
-        .system-card:hover {
-            background: var(--gray-900);
-        }
-
-        .system-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-        }
-
-        .system-icon {
-            width: 48px;
-            height: 48px;
-            border: 1px solid var(--gray-700);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .system-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--white);
-        }
-
-        .system-stat {
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 6px 12px;
-            border: 1px solid var(--gray-700);
-            color: var(--gray-400);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .system-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-
-        .system-card p {
-            color: var(--gray-500);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        /* Stats */
-        .stats-section {
-            padding: 6rem 3rem;
-            border-bottom: 1px solid var(--gray-800);
-        }
-
-        .stats-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: var(--gray-800);
-            border: 1px solid var(--gray-800);
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: var(--black);
-        }
-
-        .stat-value {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.02em;
-        }
-
-        .stat-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--gray-500);
-            font-weight: 500;
-        }
-
-        /* Why Section */
-        .why-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
-        }
-
-        .why-visual {
-            position: relative;
-            aspect-ratio: 1;
-            max-width: 450px;
-            margin: 0 auto;
-        }
-
-        .why-ring {
-            position: absolute;
-            border-radius: 50%;
-            border: 1px solid;
-        }
-
-        .why-ring-1 { inset: 0; border-color: var(--gray-800); }
-        .why-ring-2 { inset: 15%; border-color: var(--gray-700); }
-        .why-ring-3 { inset: 30%; border-color: var(--gray-600); }
-
-        .why-center {
-            position: absolute;
-            inset: 38%;
-            border-radius: 50%;
-            background: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .why-center svg {
-            width: 48px;
-            height: 48px;
-            stroke: var(--black);
-        }
-
-        .why-orbit {
-            position: absolute;
-            inset: 0;
-            animation: orbit 25s linear infinite;
-        }
-
-        @keyframes orbit {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .orbit-dot {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 10px;
-            height: 10px;
-            background: var(--white);
-            border-radius: 50%;
-        }
-
-        .why-content .section-title { margin-bottom: 3rem; }
-
-        .why-points {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .why-point {
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--gray-800);
-        }
-
-        .why-point:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .why-point svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--white);
-            flex-shrink: 0;
-        }
-
-        .why-point span {
-            font-size: 1.1rem;
-            color: var(--gray-300);
-        }
-
-        /* Contact */
-        .contact-section {
-            background: var(--gray-900);
-            border-top: 1px solid var(--gray-800);
-        }
-
-        .contact-inner {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-inner .section-title { margin-bottom: 1.5rem; }
-
-        .contact-inner > p {
-            color: var(--gray-500);
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            text-align: left;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 1.25rem;
-            background: var(--black);
-            border: 1px solid var(--gray-700);
-            color: var(--white);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
-            color: var(--gray-600);
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--white);
-        }
-
-        .contact-form textarea {
-            resize: none;
-            min-height: 140px;
-        }
-
-        .contact-form .btn { width: 100%; }
-
-        .checklist-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--gray-500);
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
-
-        .checklist-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
-        }
-
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 1rem 1.25rem;
-            background: var(--black);
-            border: 1px solid var(--gray-700);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .checklist-item:hover {
-            border-color: var(--gray-500);
-        }
-
-        .checklist-item:has(input:checked) {
-            border-color: var(--white);
-            background: var(--gray-900);
-        }
-
-        .checklist-item input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--white);
-            flex-shrink: 0;
-            cursor: pointer;
-        }
-
-        .checklist-item span {
-            font-size: 0.9rem;
-            color: var(--gray-300);
-        }
-
-        .checklist-item:has(input:checked) span {
-            color: var(--white);
-        }
-
-        .contact-note {
-            text-align: center;
-            color: var(--gray-600);
-            font-size: 0.85rem;
-            margin-top: 1.5rem;
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem;
-            border-top: 1px solid var(--gray-800);
-        }
-
-        .footer-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .footer-logo img {
-            height: 32px;
-            width: auto;
-        }
-
-        .footer-copy {
-            color: var(--gray-600);
-            font-size: 0.8rem;
-            letter-spacing: 0.05em;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .systems-grid, .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .why-section {
-                grid-template-columns: 1fr;
-                gap: 4rem;
-            }
-            .why-visual { max-width: 320px; }
-        }
-
-        @media (max-width: 768px) {
-            nav, section, footer {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-            section { padding-top: 5rem; padding-bottom: 5rem; }
-            .nav-links { display: none; }
-            .hero { padding-top: 120px; }
-            .systems-grid, .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            .form-row { grid-template-columns: 1fr; }
-            .checklist-grid { grid-template-columns: 1fr; }
-            .hero-ctas { flex-direction: column; }
-            .hero-ctas .btn { width: 100%; }
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIG OPS | AI Automation &amp; Cybersecurity for Businesses</title>
+<meta name="description" content="SIG OPS builds, automates, and protects modern businesses with AI — combining voice agents, business automation, and enterprise cybersecurity into one partner.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header -->
-    <header id="header">
-        <nav>
-            <a href="#" class="logo">
-                <img src="sigops-logo.png" alt="SigOps - Signal Operations">
-            </a>
-            <div class="nav-links">
-                <a href="about.html">About</a>
-                <a href="#systems">Systems</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <a href="#contact" class="btn btn-primary btn-sm">
-                Start Project
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-            </a>
-        </nav>
-    </header>
+<header class="site-nav">
+  <a class="logo" href="index.html"><img src="https://sigoperations.net/sigops-logo.png" alt="SIG OPS"></a>
+  <nav>
+    <a href="about.html">About</a>
+    <a href="#services">Services</a>
+    <a href="cybersecurity.html">Cybersecurity</a>
+    <a href="#contact">Contact</a>
+    <a class="btn-primary" href="#contact">Book a Strategy Call</a>
+  </nav>
+</header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="status-badge">
-                <div class="status-dot"></div>
-                <span>Now Accepting Clients</span>
-            </div>
-            <h1>YOUR BUSINESS,</h1>
-            <div class="animated-word-container">
-                <span class="animated-word" id="animated-word">AUTOMATED</span>
-            </div>
-            <p class="hero-description">
-                We build AI systems that handle your calls, qualify leads, automate follow-up,
-                and run operations — <strong>24/7, zero human intervention.</strong>
-            </p>
-            <div class="hero-ctas">
-                <a href="#contact" class="btn btn-primary btn-lg">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    Book Strategy Call
-                </a>
-                <a href="#systems" class="btn btn-outline btn-lg">
-                    Explore Systems
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </a>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+  <span class="badge">AI Operations &amp; Enterprise Cybersecurity</span>
+  <h1>WE BUILD, AUTOMATE, AND <span class="accent">PROTECT</span> MODERN BUSINESSES.</h1>
+  <p class="lead">SIG OPS is the single partner that replaces your AI vendor, your IT department, and your cybersecurity team with one accountable system — built around how your business actually runs.</p>
+  <div class="ctas">
+    <a class="btn-primary" href="#contact">Book a Strategy Call</a>
+    <a class="btn-outline" href="cybersecurity.html">See How We Protect &amp; Automate</a>
+  </div>
+</section>
 
-    <!-- Ticker -->
-    <div class="ticker">
-        <div class="ticker-track">
-            <span class="ticker-item"><span class="ticker-dot"></span>AI Voice Agents</span>
-            <span class="ticker-item"><span class="ticker-dot"></span>Lead Qualification</span>
-            <span class="ticker-item"><span class="ticker-dot"></span>CRM Integration</span>
-            <span class="ticker-item"><span class="ticker-dot"></span>24/7 Operations</span>
-            <span class="ticker-item"><span class="ticker-dot"></span>AI Voice Agents</span>
-            <span class="ticker-item"><span class="ticker-dot"></span>Lead Qualification</span>
-            <span class="ticker-item"><span class="ticker-dot"></span>CRM Integration</span>
-            <span class="ticker-item"><span class="ticker-dot"></span>24/7 Operations</span>
-        </div>
+<section class="services">
+  <div class="eyebrow">Our Three Pillars</div>
+  <h2 class="section-title">MODERNIZE. AUTOMATE. PROTECT.</h2>
+  <div class="pillars">
+    <div class="pillar-card">
+      <h3>AI Automation</h3>
+      <p>Every call answered. Every lead followed up. Every repetitive task handled — automatically, day and night.</p>
     </div>
+    <div class="pillar-card">
+      <h3>Cybersecurity</h3>
+      <p>Your systems monitored, your email protected, your business defended — every hour of every day.</p>
+    </div>
+    <div class="pillar-card">
+      <h3>Business Growth</h3>
+      <p>Less time managing operations. More time on the decisions that actually grow revenue.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Systems -->
-    <section id="systems">
-        <div class="section-inner">
-            <p class="section-label">What We Build</p>
-            <h2 class="section-title">AI SYSTEMS<br>THAT WORK</h2>
-            <div class="systems-grid">
-                <a href="receptionist.html" class="system-card" style="display: block; text-decoration: none; color: inherit;">
-                    <div class="system-header">
-                        <div class="system-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
-                        </div>
-                        <span class="system-stat">< 3s Response</span>
-                    </div>
-                    <h3>Receptionist AI</h3>
-                    <p>24/7 call handling with natural conversation. Instant booking and lead capture on every call.</p>
-                </a>
-                <a href="website-development.html" class="system-card" style="display: block; text-decoration: none; color: inherit;">
-                    <div class="system-header">
-                        <div class="system-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                        </div>
-                        <span class="system-stat">Built to Convert</span>
-                    </div>
-                    <h3>Website Development</h3>
-                    <p>Custom, conversion-focused sites with your AI systems built directly in — not bolted on.</p>
-                </a>
-                <a href="business-automation.html" class="system-card" style="display: block; text-decoration: none; color: inherit;">
-                    <div class="system-header">
-                        <div class="system-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                        </div>
-                        <span class="system-stat">Runs Itself</span>
-                    </div>
-                    <h3>Business Automation</h3>
-                    <p>Follow-ups, quotes, scheduling, and CRM syncing — automated so nothing falls through.</p>
-                </a>
-                <a href="integration.html" class="system-card" style="display: block; text-decoration: none; color: inherit;">
-                    <div class="system-header">
-                        <div class="system-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
-                        </div>
-                        <span class="system-stat">Zero Manual Entry</span>
-                    </div>
-                    <h3>Integration Engine</h3>
-                    <p>Connects everything — CRM, calendar, email, voice. One unified system.</p>
-                </a>
-                <a href="custom.html" class="system-card" style="display: block; text-decoration: none; color: inherit;">
-                    <div class="system-header">
-                        <div class="system-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
-                        </div>
-                        <span class="system-stat">∞ Possibilities</span>
-                    </div>
-                    <h3>Custom Builds</h3>
-                    <p>Bespoke AI platforms engineered for your specific workflow.</p>
-                </a>
-                <a href="cybersecurity.html" class="system-card" style="display: block; text-decoration: none; color: inherit;">
-                    <div class="system-header">
-                        <div class="system-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        </div>
-                        <span class="system-stat">Coming Soon</span>
-                    </div>
-                    <h3>AI Cybersecurity</h3>
-                    <p>API security, agentic SOC defense, and shadow AI governance — built for where attacks are headed next.</p>
-                </a>
-            </div>
-        </div>
-    </section>
+<section class="tier-block" style="max-width:900px">
+  <div class="eyebrow" style="text-align:center">Why Businesses Choose SIG OPS</div>
+  <h2 class="section-title">ONE PARTNER. NOT FIVE VENDORS.</h2>
+  <p style="color:var(--text-dim);text-align:center;max-width:700px;margin:0 auto 14px">Most businesses end up assembling this themselves — a developer for the website, a contractor for IT, a call service for the phones, a separate tool for automation. Each piece works alone. None of them talk to each other, and when something breaks, no one is fully accountable.</p>
+  <p style="color:var(--text-dim);text-align:center;max-width:700px;margin:0 auto">SIG OPS combines AI automation, business systems, and enterprise-grade cybersecurity into one relationship — one team that builds it, watches it, and stands behind it.</p>
+</section>
 
-    <!-- Stats -->
-    <section class="stats-section">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-value">&lt;3s</div>
-                <div class="stat-label">Response Time</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">10x</div>
-                <div class="stat-label">Faster Follow-Up</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">40%</div>
-                <div class="stat-label">Close Rate Increase</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">24/7</div>
-                <div class="stat-label">Always On</div>
-            </div>
-        </div>
-    </section>
+<section class="services">
+  <div class="eyebrow">Our Process</div>
+  <h2 class="section-title">HOW WE WORK</h2>
+  <div class="process-grid">
+    <div class="process-step"><div class="step-num">01</div><h3>Discover</h3><p>We learn how your business actually runs before we touch anything.</p></div>
+    <div class="process-step"><div class="step-num">02</div><h3>Build</h3><p>We design and build the systems, automations, and protections your business needs.</p></div>
+    <div class="process-step"><div class="step-num">03</div><h3>Protect</h3><p>We put monitoring, security, and safeguards behind everything we build.</p></div>
+    <div class="process-step"><div class="step-num">04</div><h3>Optimize</h3><p>We keep tuning, watching, and improving — this doesn't stop at launch.</p></div>
+  </div>
+</section>
 
-    <!-- Why Section -->
-    <section>
-        <div class="section-inner">
-            <div class="why-section">
-                <div class="why-visual">
-                    <div class="why-ring why-ring-1"></div>
-                    <div class="why-ring why-ring-2"></div>
-                    <div class="why-ring why-ring-3"></div>
-                    <div class="why-center">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
-                    </div>
-                    <div class="why-orbit"><div class="orbit-dot"></div></div>
-                </div>
-                <div class="why-content">
-                    <p class="section-label">Philosophy</p>
-                    <h2 class="section-title">OPERATORS,<br>NOT THEORISTS</h2>
-                    <div class="why-points">
-                        <div class="why-point">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>We build. We don't just advise.</span>
-                        </div>
-                        <div class="why-point">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>We integrate with your existing tools.</span>
-                        </div>
-                        <div class="why-point">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>We optimize based on real data.</span>
-                        </div>
-                        <div class="why-point">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>We're operators, not consultants.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="services" id="services">
+  <div class="eyebrow">What We Build</div>
+  <h2 class="section-title">FEATURED SERVICES</h2>
 
-    <!-- Contact -->
-    <section id="contact" class="contact-section">
-        <div class="contact-inner">
-            <p class="section-label">Get Started</p>
-            <h2 class="section-title">LET'S BUILD</h2>
-            <p>Tell us about your construction business. We'll show you what's possible.</p>
-            <form class="contact-form" action="https://formsubmit.co/dame@sigoperations.net" method="POST">
-                <input type="hidden" name="_subject" value="New SigOps Quote Request">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="https://sigoperations.net/index.html#contact">
-                <div class="form-row">
-                    <input type="text" name="name" placeholder="Name" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                </div>
-                <input type="text" name="company" placeholder="Company">
+  <h3 style="color:var(--steel-bright);margin:20px 0 14px">AI &amp; Automation</h3>
+  <div class="grid-6">
+    <div class="service-card"><div class="tag">Always On</div><h3>AI Voice Agents</h3><p>Every call answered instantly, day or night, in a natural conversation that sounds like your best employee.</p></div>
+    <div class="service-card"><div class="tag">Front Desk</div><h3>AI Receptionists</h3><p>A dedicated front desk that never takes a day off and never misses a message.</p></div>
+    <div class="service-card"><div class="tag">Modernized</div><h3>AI Phone Systems</h3><p>Your entire phone infrastructure, modernized and automated end to end.</p></div>
+    <div class="service-card"><div class="tag">Hands Off</div><h3>AI Business Automation</h3><p>The repetitive parts of your operations, running themselves.</p></div>
+    <div class="service-card"><div class="tag">Connected</div><h3>AI Workflows</h3><p>Approvals, handoffs, and follow-ups built to run without anyone remembering to do them.</p></div>
+    <div class="service-card"><div class="tag">Built For You</div><h3>Custom AI Solutions</h3><p>When off-the-shelf doesn't fit, we build exactly what your business needs.</p></div>
+  </div>
 
-                <p class="checklist-label">What are you interested in? (select all that apply)</p>
-                <div class="checklist-grid">
-                    <label class="checklist-item">
-                        <input type="checkbox" name="Interested In[]" value="Receptionist AI">
-                        <span>Receptionist AI</span>
-                    </label>
-                    <label class="checklist-item">
-                        <input type="checkbox" name="Interested In[]" value="Website Development">
-                        <span>Website Development</span>
-                    </label>
-                    <label class="checklist-item">
-                        <input type="checkbox" name="Interested In[]" value="Business Automation">
-                        <span>Business Automation</span>
-                    </label>
-                    <label class="checklist-item">
-                        <input type="checkbox" name="Interested In[]" value="Integration Engine">
-                        <span>Integration Engine</span>
-                    </label>
-                    <label class="checklist-item">
-                        <input type="checkbox" name="Interested In[]" value="Custom Build">
-                        <span>Custom Build</span>
-                    </label>
-                    <label class="checklist-item">
-                        <input type="checkbox" name="Interested In[]" value="AI Cybersecurity (Coming Soon)">
-                        <span>AI Cybersecurity</span>
-                    </label>
-                </div>
+  <h3 style="color:var(--steel-bright);margin:36px 0 14px">Digital &amp; Development</h3>
+  <div class="grid-6">
+    <div class="service-card"><div class="tag">Built To Convert</div><h3>Website Development</h3><p>A site built to convert visitors into leads, not just look good.</p></div>
+    <div class="service-card"><div class="tag">Custom Built</div><h3>Mobile App Development</h3><p>Custom apps built around how your team and customers actually work.</p></div>
+  </div>
 
-                <textarea name="message" placeholder="Tell us about your business and where you want to save time..." rows="5" required></textarea>
-                <button type="submit" class="btn btn-primary btn-lg">
-                    Get My Quote
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                </button>
-            </form>
-            <p class="contact-note">We tailor every system to your business — mention what you need most.</p>
-        </div>
-    </section>
+  <h3 style="color:var(--steel-bright);margin:36px 0 14px">Cybersecurity</h3>
+  <div class="grid-6">
+    <a class="service-card" href="cybersecurity.html"><div class="tag">Full Program</div><h3>Enterprise Cybersecurity</h3><p>A complete security program built around your business.</p></a>
+    <a class="service-card" href="cybersecurity.html"><div class="tag">24/7</div><h3>Managed Detection &amp; Response</h3><p>Threats caught and contained before they become incidents.</p></a>
+    <a class="service-card" href="cybersecurity.html"><div class="tag">M365</div><h3>Microsoft 365 Security</h3><p>Your email, files, and collaboration tools locked down the right way.</p></a>
+    <a class="service-card" href="cybersecurity.html"><div class="tag">Inbox Safe</div><h3>Email Protection</h3><p>Phishing, spoofing, and malicious email stopped before it reaches your team.</p></a>
+    <a class="service-card" href="cybersecurity.html"><div class="tag">Every Device</div><h3>Endpoint Protection</h3><p>Every device your team uses, monitored and defended.</p></a>
+    <a class="service-card" href="cybersecurity.html"><div class="tag">Your Team</div><h3>Security Awareness Training</h3><p>Your team turned into your first line of defense, not your biggest risk.</p></a>
+    <a class="service-card" href="cybersecurity.html"><div class="tag">Plain English</div><h3>Executive Security Reporting</h3><p>Clear security reports your leadership can actually use.</p></a>
+    <a class="service-card" href="cybersecurity.html"><div class="tag">Around The Clock</div><h3>Ongoing Security Monitoring</h3><p>Eyes on your systems around the clock, not just at renewal time.</p></a>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-logo">
-                <img src="sigops-logo.png" alt="SigOps">
-            </div>
-            <p class="footer-copy">© 2025 Signal Operations. All rights reserved.</p>
-        </div>
-    </footer>
+<section class="cta-block">
+  <h2>CYBERSECURITY BUILT FOR HOW BUSINESSES ACTUALLY RUN TODAY</h2>
+  <p style="max-width:700px;margin:0 auto">Your business runs on email, cloud tools, and connected systems — which means it's exposed on all of them too. SIG OPS reduces that exposure with continuous monitoring, Microsoft 365 and email protection, endpoint defense, and security reporting your leadership team can actually understand.</p>
+  <p style="max-width:700px;margin:14px auto;color:var(--text-dim)">We won't tell you that you can never be breached. No one honestly can. What we can promise is faster detection, faster response, and a partner watching your systems when you're not.</p>
+  <a class="btn-primary" href="cybersecurity.html">See Our Full Cybersecurity Program</a>
+  <p class="soft-launch">Onboarding new security clients on a limited basis.</p>
+</section>
 
-    <script>
-        // Header scroll
-        window.addEventListener('scroll', () => {
-            document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
-        });
+<section class="philosophy">
+  <div class="eyebrow">AI + Security</div>
+  <h2 class="section-title">AI THAT RUNS YOUR OPERATIONS — NOT JUST ANSWERS QUESTIONS</h2>
+  <p style="color:var(--text-dim);max-width:700px;margin:0 auto 16px">SIG OPS AI handles phone calls, appointment booking, emails, customer service, workflows, lead qualification, scheduling, and day-to-day operations — the repetitive work that quietly eats your team's time.</p>
+  <p style="color:var(--text-dim);max-width:700px;margin:0 auto">Automation and security aren't separate services at SIG OPS — they're built together. The more of your business runs on AI, the more that AI needs to be protected. Every system we automate is built with security behind it from day one.</p>
+</section>
 
-        // Animated word with blur effect
-        const words = ['AUTOMATED', 'INTELLIGENT', 'SCALABLE', 'UNSTOPPABLE'];
-        let idx = 0;
-        const el = document.getElementById('animated-word');
-        
-        setInterval(() => {
-            el.classList.add('exit');
-            setTimeout(() => {
-                idx = (idx + 1) % words.length;
-                el.textContent = words[idx];
-                el.classList.remove('exit');
-                el.classList.add('enter');
-                setTimeout(() => el.classList.remove('enter'), 50);
-            }, 400);
-        }, 3000);
+<section class="services">
+  <div class="eyebrow">Who We Work With</div>
+  <h2 class="section-title">INDUSTRIES</h2>
+  <div class="industries-grid">
+    <div class="industry-card"><h4>Construction</h4><p>Never miss a bid inquiry or a call from the field.</p></div>
+    <div class="industry-card"><h4>Property Management</h4><p>Handle tenant calls, maintenance requests, and leasing automatically.</p></div>
+    <div class="industry-card"><h4>Medical</h4><p>Protect patient data while automating scheduling and intake.</p></div>
+    <div class="industry-card"><h4>Dental</h4><p>Fill the schedule and protect patient records without adding headcount.</p></div>
+    <div class="industry-card"><h4>Law Firms</h4><p>Confidential communications protected, client intake automated.</p></div>
+    <div class="industry-card"><h4>Financial Services</h4><p>Meet the security bar your clients and regulators expect.</p></div>
+    <div class="industry-card"><h4>Professional Services</h4><p>Spend less time on admin, more time billing hours that matter.</p></div>
+    <div class="industry-card"><h4>Small Businesses</h4><p>Enterprise-grade systems, sized and priced for where you are today.</p></div>
+    <div class="industry-card"><h4>Enterprise</h4><p>A dedicated partner for organizations running AI and security at scale.</p></div>
+  </div>
+</section>
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                e.preventDefault();
-                document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
+<section class="philosophy diff-list">
+  <div class="eyebrow">Why We're Different</div>
+  <h2 class="section-title">WE BUILD. WE MANAGE. WE PROTECT.</h2>
+  <p>Most companies sell software. <strong>We build systems.</strong></p>
+  <p>Most companies install technology. <strong>We manage it.</strong></p>
+  <p>Most companies solve one problem. <strong>SIG OPS helps your business operate smarter and safer — together.</strong></p>
+</section>
 
-        // Fold checklist selections into the message so they always show up
-        // in the email, regardless of how the mail service renders array fields.
-        const contactForm = document.querySelector('.contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', () => {
-                const checked = Array.from(
-                    contactForm.querySelectorAll('input[name="Interested In[]"]:checked')
-                ).map(cb => cb.value);
-                const messageField = contactForm.querySelector('textarea[name="message"]');
-                if (messageField && checked.length) {
-                    messageField.value = `Interested in: ${checked.join(', ')}\n\n${messageField.value}`;
-                }
-            });
-        }
-    </script>
+<section class="services">
+  <div class="eyebrow">Questions</div>
+  <h2 class="section-title">FAQ</h2>
+  <details class="faq-item">
+    <summary>How is SIG OPS different from hiring an IT company?</summary>
+    <p>An IT company keeps your systems running. SIG OPS builds the AI systems that automate your operations and the security program that protects them — as one connected partner, not two separate vendors.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Will AI replace my staff?</summary>
+    <p>No. SIG OPS AI handles the repetitive, time-consuming work — calls, scheduling, follow-ups, data entry — so your team can spend time on the parts of the job that actually need a person.</p>
+  </details>
+  <details class="faq-item">
+    <summary>How fast can we get started?</summary>
+    <p>Most engagements start with a strategy call to understand your operations, followed by a phased build — you're never waiting on a single big-bang launch.</p>
+  </details>
+  <details class="faq-item">
+    <summary>What happens if there's a security incident?</summary>
+    <p>Our monitoring is built to catch issues early and respond fast. You'll get clear communication and a plain-English report — not silence and jargon.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Do I need to be a large company to work with SIG OPS?</summary>
+    <p>No. Our systems are built to scale to where your business is today, from small teams to enterprise operations.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Can you work alongside our existing team and tools?</summary>
+    <p>Yes. We integrate with what you already use rather than requiring you to rip and replace.</p>
+  </details>
+</section>
+
+<section class="cta-block" id="contact">
+  <h2>LET'S UPGRADE AND UPDATE YOUR BUSINESS WITH AI</h2>
+  <p>Tell us about your business. We'll show you what's possible.</p>
+  <form class="contact-form" action="mailto:dame@sigoperations.net" method="post" enctype="text/plain">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+    <label for="phone">Phone</label>
+    <input type="tel" id="phone" name="phone">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="4"></textarea>
+    <button type="submit" class="btn-primary">Send Inquiry</button>
+  </form>
+  <p class="form-note">We'll route your inquiry to our team and follow up shortly.</p>
+</section>
+
+<footer class="site-footer">
+  <img src="https://sigoperations.net/sigops-logo.png" alt="SigOps">
+  <p style="max-width:520px;margin:0 auto 14px;font-style:italic">SIG OPS exists to help businesses automate their operations, strengthen their cybersecurity posture, and confidently grow using AI.</p>
+  <p>&copy; 2026 Signal Operations. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
