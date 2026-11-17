@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refund &amp; Cancellation Policy | SigOps Inc.</title>
+<meta name="description" content="Refund &amp; Cancellation Policy for SigOps Inc.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#000;--white:#fff;--g100:#f5f5f5;--g300:#d4d4d4;--g400:#a3a3a3;--g500:#737373;--g700:#404040;--g800:#262626;--g900:#171717}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--black);color:var(--white);line-height:1.6;overflow-x:hidden}
+::selection{background:var(--white);color:var(--black)}
+a{color:inherit;text-decoration:none}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--g800)}
+nav{max-width:1280px;margin:0 auto;padding:0 32px;height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{height:40px;width:auto;filter:brightness(0) invert(1)}
+.logo .name{font-size:17px;font-weight:800;letter-spacing:.08em}
+.logo .sub{font-size:11px;color:var(--g400);letter-spacing:.14em;text-transform:uppercase}
+.nav-links{display:flex;gap:28px;align-items:center;font-size:14px;color:var(--g300)}
+.nav-links a:hover{color:var(--white)}
+.btn{display:inline-block;background:var(--white);color:var(--black);padding:12px 22px;border-radius:6px;font-weight:600;font-size:14px;border:1px solid var(--white);transition:.2s}
+.btn:hover{background:transparent;color:var(--white)}
+.btn.ghost{background:transparent;color:var(--white);border-color:var(--g700)}
+.btn.ghost:hover{border-color:var(--white)}
+.menu-toggle{display:none;background:none;border:1px solid var(--g700);color:#fff;padding:8px 12px;border-radius:6px;font-size:14px}
+section{max-width:1280px;margin:0 auto;padding:96px 32px}
+.hero{padding-top:180px;padding-bottom:100px}
+.label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--g400);margin-bottom:16px}
+h1{font-size:clamp(40px,6vw,76px);font-weight:800;line-height:1.05;letter-spacing:-.03em;max-width:900px}
+.hero p{font-size:19px;color:var(--g400);max-width:640px;margin:28px 0 40px}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.section-title{font-size:clamp(30px,4vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:16px}
+.section-desc{color:var(--g400);max-width:640px;font-size:17px}
+.section-header{margin-bottom:56px}
+hr.divider{border:none;border-top:1px solid var(--g800);max-width:1280px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.card{background:var(--g900);border:1px solid var(--g800);border-radius:12px;padding:30px;transition:.25s;position:relative}
+.card:hover{border-color:var(--g500);transform:translateY(-3px)}
+.card h3{font-size:20px;font-weight:700;margin-bottom:10px}
+.card p{color:var(--g400);font-size:15px}
+.card ul{list-style:none;margin-top:14px}
+.card li{color:var(--g300);font-size:14px;padding:4px 0 4px 18px;position:relative}
+.card li::before{content:'';position:absolute;left:0;top:12px;width:6px;height:6px;border-radius:50%;background:var(--white)}
+.tag{position:absolute;top:22px;right:22px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--white);color:var(--black)}
+.tag.core{background:transparent;color:var(--g400);border:1px solid var(--g700)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.step-num{font-size:44px;font-weight:800;color:var(--g700);margin-bottom:10px}
+.step-title{font-size:19px;font-weight:700;margin-bottom:8px}
+.step p{color:var(--g400);font-size:15px}
+.pkg{display:flex;flex-direction:column}
+.pkg.featured{border-color:var(--white)}
+.pkg .tag{top:-12px;right:20px}
+.pkg .tier{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--g500)}
+.pkg .pname{font-size:28px;font-weight:800;margin:6px 0 10px}
+.price{margin:18px 0 6px}
+.price .amt{font-size:40px;font-weight:800;letter-spacing:-.02em}
+.price .per{color:var(--g400);font-size:15px}
+.setup{color:var(--g300);font-size:14px;margin-bottom:6px}
+.pkg .pkg-cta{margin-top:auto;padding-top:22px}
+.fine{color:var(--g500);font-size:13px;margin-top:28px;max-width:900px}
+.fine a{text-decoration:underline}
+.ind{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.ind div{border:1px solid var(--g800);border-radius:10px;padding:20px;font-weight:600;background:var(--g900)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:48px}
+.info p{color:var(--g300);margin-bottom:14px}
+.info strong{color:var(--white);display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px;color:var(--g400)}
+form{display:grid;gap:14px}
+input,select,textarea{width:100%;background:var(--g900);border:1px solid var(--g800);color:var(--white);padding:14px;border-radius:8px;font:inherit;font-size:15px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--white)}
+textarea{min-height:130px;resize:vertical}
+.consent{display:flex;gap:10px;align-items:flex-start;color:var(--g400);font-size:13px}
+.consent input{width:auto;margin-top:3px}
+.consent a{text-decoration:underline;color:var(--g300)}
+footer{border-top:1px solid var(--g800);margin-top:40px}
+.foot{max-width:1280px;margin:0 auto;padding:56px 32px 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.foot h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--g500);margin-bottom:14px}
+.foot p,.foot a{color:var(--g400);font-size:14px;display:block;margin-bottom:8px}
+.foot a:hover{color:var(--white)}
+.foot-bottom{max-width:1280px;margin:0 auto;padding:20px 32px 40px;border-top:1px solid var(--g800);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--g500);font-size:13px}
+.status{display:flex;align-items:center;gap:8px}
+.status::before{content:'';width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 10px #fff}
+.legal{max-width:860px;padding-top:150px}
+.legal h1{font-size:clamp(34px,5vw,52px);margin-bottom:10px}
+.legal .eff{color:var(--g500);margin-bottom:40px;font-size:14px}
+.legal h2{font-size:21px;font-weight:700;margin:36px 0 12px}
+.legal p,.legal li{color:var(--g300);font-size:16px;margin-bottom:12px}
+.legal ul{padding-left:22px;margin-bottom:12px}
+.legal a{text-decoration:underline}
+.legal table{width:100%;border-collapse:collapse;margin:10px 0 20px}
+.legal th,.legal td{text-align:left;border-bottom:1px solid var(--g800);padding:10px 8px;font-size:15px;color:var(--g300)}
+.legal th{color:var(--white)}
+@media(max-width:900px){
+ .nav-links{display:none;position:absolute;top:76px;left:0;right:0;background:#000;flex-direction:column;padding:24px;border-bottom:1px solid var(--g800)}
+ .nav-links.open{display:flex}
+ .menu-toggle{display:block}
+ .contact-wrap,.foot{grid-template-columns:1fr}
+ section{padding:72px 22px}
+}
+</style>
+</head>
+<body>
+<header>
+ <nav>
+  <a href="index.html" class="logo" aria-label="SigOps home">
+   <img src="sigops-logo.png" alt="" onerror="this.style.display='none'">
+   <div><div class="name">SIGOPS</div><div class="sub">SigOps Inc.</div></div>
+  </a>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">Menu</button>
+  <div class="nav-links">
+   <a href="index.html#services">AI Services</a>
+   <a href="cybersecurity.html">Cybersecurity</a>
+   <a href="index.html#how">How It Works</a>
+   <a href="index.html#pricing">Pricing</a>
+   <a href="index.html#contact">Contact</a>
+   <a href="index.html#contact" class="btn">Book a Call</a>
+  </div>
+ </nav>
+</header>
+<section class="legal"><div class="label">SigOps Inc.</div><h1>Refund & Cancellation Policy</h1><div class="eff">Effective date: November 17, 2026</div><h2>Summary</h2><p>This policy explains when SigOps Inc. ("SigOps," "we," "us") issues refunds and how you can cancel a subscription. Please read it before you buy. By paying for any service you agree to this policy.</p><table><tr><th>Plan</th><th>Up-front payment</th><th>Monthly subscription</th></tr><tr><td>Launch (AI package)</td><td>$1,500 USD setup</td><td>$1,000 USD / month</td></tr><tr><td>Grow (AI package)</td><td>$2,500 USD setup</td><td>$2,000 USD / month</td></tr><tr><td>Scale (AI package)</td><td>$3,500 USD setup</td><td>$3,500 USD / month</td></tr><tr><td>Sentinel (compliance, 1 to 20 users)</td><td>$20,000 USD / year, paid at signing</td><td>None</td></tr><tr><td>Guardian (compliance, 21 to 50 users)</td><td>$30,000 USD / year, paid at signing</td><td>None</td></tr><tr><td>Fortify (compliance, 51 to 100 users)</td><td>$40,000 USD / year, paid at signing</td><td>None</td></tr><tr><td>Command (compliance, 101 to 200 users)</td><td>$50,000 USD / year, paid at signing</td><td>None</td></tr></table><h2>Setup fees are non-refundable</h2><p>Setup fees pay for discovery, configuration, scripting, integration and testing work that begins once payment is received. <strong>Setup fees are non-refundable once paid.</strong></p><p>The one exception: if SigOps cannot start or deliver the agreed setup work for reasons within our control, we will refund the setup fee in full.</p><h2>Monthly subscriptions</h2><ul><li>Monthly plans are billed in advance and renew automatically each month on the same date until cancelled.</li><li>You can cancel any time by giving <strong>30 days written notice</strong> by email to <a href="mailto:dame@sigoperations.net">dame@sigoperations.net</a>. Cancellation takes effect at the end of the 30 day notice period.</li><li>Months already billed are not refunded, and we do not give partial-month refunds. Your service keeps running through the end of the notice period.</li><li>We confirm every cancellation by email within 2 business days.</li></ul><h2>Annual compliance plans</h2><ul><li>Compliance plans (Sentinel, Guardian, Fortify and Command) are 12-month agreements, paid in full at signing.</li><li><strong>Compliance plan fees are non-refundable once onboarding begins.</strong> If you cancel in writing before onboarding begins, we refund the full amount.</li><li>The plan cannot be cancelled for a partial refund during the 12-month term. Services continue through the end of the term.</li><li>If SigOps cannot start or deliver the agreed services for reasons within our control, we refund the unused portion.</li></ul><h2>Managed security add-ons</h2><p>Monthly add-on services (EDR/MDR, SIEM/XDR, email domain defense and network monitoring) are billed monthly in advance and can be cancelled with 30 days written notice. Months already billed are not refunded.</p><h2>Custom work and individual services</h2><p>Custom builds and one-off services are priced in a written proposal. Any deposit or milestone payment listed in that proposal is non-refundable once the related work has started, unless the proposal says otherwise.</p><h2>Third-party costs</h2><p>Ad spend paid to Meta or other platforms, and third-party software fees paid directly by you, are not refundable by SigOps.</p><h2>Billing errors and disputes</h2><p>If you think you were charged in error, contact us within 30 days of the charge. If we confirm a billing error, we refund the incorrect amount to your original payment method within 5 to 10 business days. Please contact us before filing a dispute with your card issuer so we can fix it quickly.</p><h2>How refunds are paid</h2><p>Approved refunds go back to the original payment method. Card refunds usually appear within 5 to 10 business days, depending on your bank.</p><h2>Contact us</h2><p>SigOps Inc.<br>12819 SE 38th St, #317, Bellevue, WA 98006<br>Phone: <a href="tel:+14254426061">425-442-6061</a><br>Email: <a href="mailto:dame@sigoperations.net">dame@sigoperations.net</a></p></section>
+<footer>
+ <div class="foot">
+  <div>
+   <h4>SigOps Inc.</h4>
+   <p>AI automation, cybersecurity and compliance, voice agents and AI marketing for businesses.</p>
+   <p>12819 SE 38th St, #317, Bellevue, WA 98006</p>
+   <p><a href="tel:+14254426061" style="display:inline">425-442-6061</a></p>
+   <p><a href="mailto:dame@sigoperations.net" style="display:inline">dame@sigoperations.net</a></p>
+  </div>
+  <div>
+   <h4>Company</h4>
+   <a href="index.html#services">AI Services</a>
+   <a href="cybersecurity.html">Cybersecurity &amp; Compliance</a>
+   <a href="index.html#pricing">Pricing</a>
+   <a href="index.html#contact">Contact Us</a>
+  </div>
+  <div>
+   <h4>Policies</h4>
+   <a href="terms.html">Terms of Service</a>
+   <a href="privacy.html">Privacy Policy</a>
+   <a href="refund.html">Refund &amp; Cancellation Policy</a>
+   <a href="delivery.html">Service Delivery Policy</a>
+  </div>
+ </div>
+ <div class="foot-bottom">
+  <span>&copy; 2026 SigOps Inc. All rights reserved. All prices in U.S. dollars (USD).</span>
+  <span class="status">Systems Online. sigoperation.com</span>
+ </div>
+</footer>
+</body>
+</html>

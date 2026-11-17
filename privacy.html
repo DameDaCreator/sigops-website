@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | SigOps Inc.</title>
+<meta name="description" content="Privacy Policy for SigOps Inc.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#000;--white:#fff;--g100:#f5f5f5;--g300:#d4d4d4;--g400:#a3a3a3;--g500:#737373;--g700:#404040;--g800:#262626;--g900:#171717}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--black);color:var(--white);line-height:1.6;overflow-x:hidden}
+::selection{background:var(--white);color:var(--black)}
+a{color:inherit;text-decoration:none}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--g800)}
+nav{max-width:1280px;margin:0 auto;padding:0 32px;height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{height:40px;width:auto;filter:brightness(0) invert(1)}
+.logo .name{font-size:17px;font-weight:800;letter-spacing:.08em}
+.logo .sub{font-size:11px;color:var(--g400);letter-spacing:.14em;text-transform:uppercase}
+.nav-links{display:flex;gap:28px;align-items:center;font-size:14px;color:var(--g300)}
+.nav-links a:hover{color:var(--white)}
+.btn{display:inline-block;background:var(--white);color:var(--black);padding:12px 22px;border-radius:6px;font-weight:600;font-size:14px;border:1px solid var(--white);transition:.2s}
+.btn:hover{background:transparent;color:var(--white)}
+.btn.ghost{background:transparent;color:var(--white);border-color:var(--g700)}
+.btn.ghost:hover{border-color:var(--white)}
+.menu-toggle{display:none;background:none;border:1px solid var(--g700);color:#fff;padding:8px 12px;border-radius:6px;font-size:14px}
+section{max-width:1280px;margin:0 auto;padding:96px 32px}
+.hero{padding-top:180px;padding-bottom:100px}
+.label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--g400);margin-bottom:16px}
+h1{font-size:clamp(40px,6vw,76px);font-weight:800;line-height:1.05;letter-spacing:-.03em;max-width:900px}
+.hero p{font-size:19px;color:var(--g400);max-width:640px;margin:28px 0 40px}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.section-title{font-size:clamp(30px,4vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:16px}
+.section-desc{color:var(--g400);max-width:640px;font-size:17px}
+.section-header{margin-bottom:56px}
+hr.divider{border:none;border-top:1px solid var(--g800);max-width:1280px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.card{background:var(--g900);border:1px solid var(--g800);border-radius:12px;padding:30px;transition:.25s;position:relative}
+.card:hover{border-color:var(--g500);transform:translateY(-3px)}
+.card h3{font-size:20px;font-weight:700;margin-bottom:10px}
+.card p{color:var(--g400);font-size:15px}
+.card ul{list-style:none;margin-top:14px}
+.card li{color:var(--g300);font-size:14px;padding:4px 0 4px 18px;position:relative}
+.card li::before{content:'';position:absolute;left:0;top:12px;width:6px;height:6px;border-radius:50%;background:var(--white)}
+.tag{position:absolute;top:22px;right:22px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--white);color:var(--black)}
+.tag.core{background:transparent;color:var(--g400);border:1px solid var(--g700)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.step-num{font-size:44px;font-weight:800;color:var(--g700);margin-bottom:10px}
+.step-title{font-size:19px;font-weight:700;margin-bottom:8px}
+.step p{color:var(--g400);font-size:15px}
+.pkg{display:flex;flex-direction:column}
+.pkg.featured{border-color:var(--white)}
+.pkg .tag{top:-12px;right:20px}
+.pkg .tier{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--g500)}
+.pkg .pname{font-size:28px;font-weight:800;margin:6px 0 10px}
+.price{margin:18px 0 6px}
+.price .amt{font-size:40px;font-weight:800;letter-spacing:-.02em}
+.price .per{color:var(--g400);font-size:15px}
+.setup{color:var(--g300);font-size:14px;margin-bottom:6px}
+.pkg .pkg-cta{margin-top:auto;padding-top:22px}
+.fine{color:var(--g500);font-size:13px;margin-top:28px;max-width:900px}
+.fine a{text-decoration:underline}
+.ind{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.ind div{border:1px solid var(--g800);border-radius:10px;padding:20px;font-weight:600;background:var(--g900)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:48px}
+.info p{color:var(--g300);margin-bottom:14px}
+.info strong{color:var(--white);display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px;color:var(--g400)}
+form{display:grid;gap:14px}
+input,select,textarea{width:100%;background:var(--g900);border:1px solid var(--g800);color:var(--white);padding:14px;border-radius:8px;font:inherit;font-size:15px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--white)}
+textarea{min-height:130px;resize:vertical}
+.consent{display:flex;gap:10px;align-items:flex-start;color:var(--g400);font-size:13px}
+.consent input{width:auto;margin-top:3px}
+.consent a{text-decoration:underline;color:var(--g300)}
+footer{border-top:1px solid var(--g800);margin-top:40px}
+.foot{max-width:1280px;margin:0 auto;padding:56px 32px 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.foot h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--g500);margin-bottom:14px}
+.foot p,.foot a{color:var(--g400);font-size:14px;display:block;margin-bottom:8px}
+.foot a:hover{color:var(--white)}
+.foot-bottom{max-width:1280px;margin:0 auto;padding:20px 32px 40px;border-top:1px solid var(--g800);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--g500);font-size:13px}
+.status{display:flex;align-items:center;gap:8px}
+.status::before{content:'';width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 10px #fff}
+.legal{max-width:860px;padding-top:150px}
+.legal h1{font-size:clamp(34px,5vw,52px);margin-bottom:10px}
+.legal .eff{color:var(--g500);margin-bottom:40px;font-size:14px}
+.legal h2{font-size:21px;font-weight:700;margin:36px 0 12px}
+.legal p,.legal li{color:var(--g300);font-size:16px;margin-bottom:12px}
+.legal ul{padding-left:22px;margin-bottom:12px}
+.legal a{text-decoration:underline}
+.legal table{width:100%;border-collapse:collapse;margin:10px 0 20px}
+.legal th,.legal td{text-align:left;border-bottom:1px solid var(--g800);padding:10px 8px;font-size:15px;color:var(--g300)}
+.legal th{color:var(--white)}
+@media(max-width:900px){
+ .nav-links{display:none;position:absolute;top:76px;left:0;right:0;background:#000;flex-direction:column;padding:24px;border-bottom:1px solid var(--g800)}
+ .nav-links.open{display:flex}
+ .menu-toggle{display:block}
+ .contact-wrap,.foot{grid-template-columns:1fr}
+ section{padding:72px 22px}
+}
+</style>
+</head>
+<body>
+<header>
+ <nav>
+  <a href="index.html" class="logo" aria-label="SigOps home">
+   <img src="sigops-logo.png" alt="" onerror="this.style.display='none'">
+   <div><div class="name">SIGOPS</div><div class="sub">SigOps Inc.</div></div>
+  </a>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">Menu</button>
+  <div class="nav-links">
+   <a href="index.html#services">AI Services</a>
+   <a href="cybersecurity.html">Cybersecurity</a>
+   <a href="index.html#how">How It Works</a>
+   <a href="index.html#pricing">Pricing</a>
+   <a href="index.html#contact">Contact</a>
+   <a href="index.html#contact" class="btn">Book a Call</a>
+  </div>
+ </nav>
+</header>
+<section class="legal"><div class="label">SigOps Inc.</div><h1>Privacy Policy</h1><div class="eff">Effective date: November 17, 2026</div><h2>Who we are</h2><p>This website, sigoperation.com, is operated by SigOps Inc., 12819 SE 38th St, #317, Bellevue, WA 98006. This policy explains what personal information we collect, how we use it and the choices you have.</p><h2>Information we collect</h2><ul><li><strong>Information you give us:</strong> name, company, email, phone number and anything you write in our contact form or emails.</li><li><strong>Billing information:</strong> when you pay, your card is processed by our payment processor and gateway (such as Authorize.net). SigOps does not store full card numbers on our systems.</li><li><strong>Service data:</strong> call recordings, transcripts and lead information processed through systems we run for clients, handled only to provide the service.</li><li><strong>Security data:</strong> for cybersecurity clients, device, log and network data collected by our monitoring tools, used only to detect and respond to threats and to support your compliance program.</li><li><strong>Website data:</strong> basic technical data such as browser type, pages visited and IP address, collected by our hosting provider.</li></ul><h2>How we use it</h2><ul><li>To answer inquiries and provide the services you buy</li><li>To process payments and send invoices and receipts</li><li>To send service updates and, if you agree, occasional marketing (you can opt out any time)</li><li>To meet legal, tax and accounting requirements and prevent fraud</li></ul><h2>How we share it</h2><p>We do not sell or rent your personal information. We share it only with service providers who help us run the business, such as payment processors, hosting, email, phone and AI software providers, and only as needed to provide our services, or when required by law.</p><h2>Payment security</h2><p>Payments are processed over encrypted (HTTPS/TLS) connections by PCI DSS compliant payment providers. Card data is sent directly to the payment gateway and is not stored by SigOps.</p><h2>Cookies</h2><p>This site uses only the basic cookies needed to load the website. We do not use advertising cookies on this site.</p><h2>Data retention</h2><p>We keep personal information only as long as needed to provide services and meet legal and accounting requirements, then delete it securely.</p><h2>Your choices and rights</h2><p>You can ask to see, correct or delete your personal information, or opt out of marketing emails, by contacting <a href="mailto:dame@sigoperations.net">dame@sigoperations.net</a>. We respond within 30 days. Depending on where you live, you may have additional rights under state law, and we will honor them.</p><h2>Children</h2><p>Our services are for businesses. We do not knowingly collect information from anyone under 18.</p><h2>Changes</h2><p>We may update this policy. The effective date at the top shows when it last changed.</p><h2>Contact us</h2><p>SigOps Inc.<br>12819 SE 38th St, #317, Bellevue, WA 98006<br>Phone: <a href="tel:+14254426061">425-442-6061</a><br>Email: <a href="mailto:dame@sigoperations.net">dame@sigoperations.net</a></p></section>
+<footer>
+ <div class="foot">
+  <div>
+   <h4>SigOps Inc.</h4>
+   <p>AI automation, cybersecurity and compliance, voice agents and AI marketing for businesses.</p>
+   <p>12819 SE 38th St, #317, Bellevue, WA 98006</p>
+   <p><a href="tel:+14254426061" style="display:inline">425-442-6061</a></p>
+   <p><a href="mailto:dame@sigoperations.net" style="display:inline">dame@sigoperations.net</a></p>
+  </div>
+  <div>
+   <h4>Company</h4>
+   <a href="index.html#services">AI Services</a>
+   <a href="cybersecurity.html">Cybersecurity &amp; Compliance</a>
+   <a href="index.html#pricing">Pricing</a>
+   <a href="index.html#contact">Contact Us</a>
+  </div>
+  <div>
+   <h4>Policies</h4>
+   <a href="terms.html">Terms of Service</a>
+   <a href="privacy.html">Privacy Policy</a>
+   <a href="refund.html">Refund &amp; Cancellation Policy</a>
+   <a href="delivery.html">Service Delivery Policy</a>
+  </div>
+ </div>
+ <div class="foot-bottom">
+  <span>&copy; 2026 SigOps Inc. All rights reserved. All prices in U.S. dollars (USD).</span>
+  <span class="status">Systems Online. sigoperation.com</span>
+ </div>
+</footer>
+</body>
+</html>
