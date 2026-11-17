@@ -1,0 +1,44 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/3vb2bt6bxlxg6.js"
+3:"/_next/static/chunks/32dd-0g35rvss.js"
+4:I[73478,["$2","$3"],"SiteNav"]
+5:I[39756,["$2","$3"],"default"]
+6:I[37457,["$2","$3"],"default"]
+1c:"ViewportBoundary"
+1d:I[97367,["$2","$3"],"$1c"]
+1f:"MetadataBoundary"
+20:I[97367,["$2","$3"],"$1f"]
+21:"$Sreact.suspense"
+23:I[68027,["$2","$3"],"default",1]
+:HL["/_next/static/chunks/29zmrr4wxfd_d.css","style"]
+8:X
+9:[["children",{"s":"__PAGE__","h":512,"d":{"r":["$","$1","c",{"children":[[["$","main",null,{"className":"px-6 py-16","children":["$","article",null,{"className":"mx-auto max-w-3xl","children":[["$","p",null,{"className":"text-xs uppercase tracking-widest text-muted-foreground","children":"SigOps INC"}],["$","h1",null,{"className":"mt-2 text-4xl font-black text-foreground","children":"Privacy Policy"}],["$","p",null,{"className":"mt-2 text-sm text-muted-foreground","children":["Effective ","November 16, 2026"]}],["$","div",null,{"className":"mt-8 space-y-4 text-sm leading-relaxed text-muted-foreground [&_h2]:mt-8 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-foreground [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-5 [&_a]:text-foreground [&_a]:underline","children":[["$","p",null,{"children":["SigOps INC"," (\"SIG OPS,\" \"we,\" \"us\") operates ","https://sigoperations.net",". This policy explains what information we collect, how we use it, and the choices you have."]}],["$","h2",null,{"children":"Information we collect"}],["$","ul",null,{"children":[["$","li",null,{"children":"Contact details you give us: name, business name, email, phone number, and mailing address."}],["$","li",null,{"children":"Business information you share to scope a project, such as call volumes, systems, and goals."}],["$","li",null,{"children":"Billing information, which is entered directly with our payment processor, Authorize.Net. We do not see or store full card numbers."}],["$","li",null,{"children":"Basic technical data such as browser type, pages visited, and IP address, collected through standard server logs."}]]}],["$","h2",null,{"children":"How we use information"}],["$","ul",null,{"children":[["$","li",null,{"children":"To respond to inquiries and provide, support, and improve our services."}],["$","li",null,{"children":"To process payments, send invoices, and keep required business records."}],["$","li",null,{"children":"To communicate about your project, security, and service updates."}],["$","li",null,{"children":"To comply with legal obligations and protect against fraud or misuse."}]]}],["$","h2",null,{"children":"Sharing"}],["$","p",null,{"children":"We do not sell your personal information. We share it only with service providers who help us operate (for example payment processing, hosting, and communications), when required by law, or with your consent. Those providers may use the information only to perform services for us."}],"$La","$Lb","$Lc","$Ld","$Le","$Lf","$L10","$L11","$L12","$L13","$L14","$L15","$L16","$L17"]}]]}]}],"$L18"],["$L19","$L1a"],"$L1b"]}],"p":false,"v":null}}]]
+7:[["children",{"s":"privacy","h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$8"},"c":"$Q9"}]]
+0:{"P":null,"c":["","privacy",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/29zmrr4wxfd_d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3vb2bt6bxlxg6.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/32dd-0g35rvss.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased","children":[["$","$L4",null,{}],["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],"p":false,"v":null},"c":"$Q7"},"h":{"r":["$","$1","h",{"children":[null,["$","$L1d",null,{"children":"$L1e"}],["$","$L20",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$21",null,{"name":"Next.Metadata","children":"$L22"}]}],null]}],null]}],"p":false,"v":null}},"m":"$undefined","G":["$23",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/29zmrr4wxfd_d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"GD_FscRWf3WDD2uKBdDve"}
+24:"/_next/static/chunks/06foipnf20ywb.js"
+25:"/_next/static/chunks/2nzrgfbfbmnak.js"
+26:I[33891,["$2","$3","$24","$25"],"Footer"]
+27:I[97367,["$2","$3"],"OutletBoundary"]
+8:C
+a:["$","h2",null,{"children":"Payments"}]
+b:["$","p",null,{"children":"Card payments are processed securely by Authorize.Net. Card data is transmitted over encrypted connections and handled under the processor's PCI-DSS controls."}]
+c:["$","h2",null,{"children":"Cookies and analytics"}]
+d:["$","p",null,{"children":"This site uses only essential technologies needed to function. If we add analytics or advertising cookies in the future, we will update this policy."}]
+e:["$","h2",null,{"children":"Data retention and security"}]
+f:["$","p",null,{"children":"We keep information only as long as needed for the purposes above or as required by law, and use reasonable administrative and technical safeguards. No method of transmission or storage is completely secure."}]
+10:["$","h2",null,{"children":"Your rights"}]
+11:["$","p",null,{"children":"You may request access to, correction of, or deletion of your personal information by contacting us below. Residents of certain states may have additional rights under applicable privacy laws, and we will honor valid requests."}]
+12:["$","h2",null,{"children":"Children"}]
+13:["$","p",null,{"children":"Our services are for businesses and are not directed to children under 13."}]
+14:["$","h2",null,{"children":"Changes"}]
+15:["$","p",null,{"children":"We may update this policy and will post the new effective date on this page."}]
+16:["$","h2",null,{"children":"Contact"}]
+17:["$","p",null,{"children":["SigOps INC",["$","br",null,{}],"12819 SE 38th St, Unit 317, Bellevue, WA 98006",["$","br",null,{}],["$","a",null,{"href":"tel:+14254426061","children":"425-442-6061"}]," ·"," ",["$","a",null,{"href":"mailto:dame@sigoperations.net","children":"dame@sigoperations.net"}]]}]
+18:["$","$L26",null,{}]
+19:["$","script","script-0",{"src":"/_next/static/chunks/06foipnf20ywb.js","async":true,"nonce":"$undefined"}]
+1a:["$","script","script-1",{"src":"/_next/static/chunks/2nzrgfbfbmnak.js","async":true,"nonce":"$undefined"}]
+1b:["$","$L27",null,{"children":["$","$21",null,{"name":"Next.MetadataOutlet","children":"$@28"}]}]
+1e:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+29:I[27201,["$2","$3"],"IconMark"]
+22:[["$","title","0",{"children":"Privacy Policy | SIG OPS"}],["$","meta","1",{"name":"description","content":"SIG OPS builds, automates, and protects modern businesses with AI — combining voice agents, business automation, and enterprise cybersecurity into one partner."}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.117ezoe8m31dk.ico","sizes":"48x48","type":"image/x-icon"}],["$","$L29","3",{}]]
+28:null
